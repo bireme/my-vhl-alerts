@@ -1,0 +1,61 @@
+<?php
+/**
+ * Configuration File
+ *
+ * @package     Minha BVS - Alertas
+ * @author      Wilson da Silva Moura (mourawil@paho.org)
+ * @copyright   BIREME/PAHO/WHO
+ *
+ */
+
+/* MySQL Database configuration */
+define("DB_HOST","");
+define("DB_USERNAME","");
+define("DB_PASSWORD","");
+define("DB_DBNAME","");
+
+/* Site configuration */
+define("SITENAME","Minha BVS - Alertas");
+define("APP_BASEDIR",dirname(__FILE__)); /* app base dir ex. /home/alerts/htdocs */
+define("CHARSET","utf-8"); /* output charset */
+define("ACCEPTED_CHARSETS","UTF-8,ISO-8859-1"); /* input charsets */
+define("SYS_CHARSET","UTF-8"); /* internal sys charset */
+define("DOCTYPE",'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">');
+define("VERSION","0.1");
+define("DOCUMENTS_PER_PAGE","10"); /* pagination */
+define("VHL_SEARCH_PORTAL_DOMAIN","http://pesquisa.bvsalud.org");
+
+/* Regular Expressions */
+define("REGEXP_LANGUAGE","/^(pt)|(es)|(en)$/");
+define("REGEXP_EMAIL","/^[a-z_][a-z0-9_\.]+@[a-z0-9]+(\.[a-z0-9_]+)+$/i");
+define("REGEXP_INTEGER","/^[0-9]+$/");
+define("REGEXP_DOCID","/^[A-Za-z0-9_-]+$/");
+define("REGEXP_HTTP","/^(https?).+/");
+define("REGEXP_USER_NAME",'/[À-ÖØ-öø-ÿ\w\-]+/');
+define("REGEXP_DATE","/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/");
+
+/* SimilarDocs service */
+define("SIMDOCS_GET_PROFILES", "http://serverofi5.bireme.br:8180/SDService/SDService?psId=#PSID#&showProfiles=");
+define("SIMDOCS_SIMILARS_STRING", "http://serverofi5.bireme.br:8180/SDService/SDService?psId=#PSID#&getSimDocs=#PROFILE#");
+
+/* EMAIL configuration */
+define("EMAIL_HOST",'');
+define("EMAIL_FROM",'');
+define("EMAIL_FROMNAME",'');
+define("EMAIL_USERNAME",'');
+define("EMAIL_PASSWORD",'');
+define("EMAIL_ALERT_TEMPLATE",APP_BASEDIR.'/../templates/alerts.#LANG#.php');
+
+/* log configuration */
+$_conf = array('mode' => 0600, 'timeFormat' => '%X %x');
+define('LOG_FILE',dirname(__FILE__).'/out.log');
+
+/* language configuration */
+define("DEFAULT_LANG","pt");
+$languages = array(
+    'pt' => 'Português',
+    'es' => 'Español',
+    'en' => 'English'
+);
+?>
