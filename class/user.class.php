@@ -17,14 +17,14 @@ class Users {
     /**
      * Get a specific user data
      *
-     * @param string $userID
+     * @param string $id User ID
      * @return array User data
      */
-    public static function get_user_data($userID){
+    public static function get_user_data($id){
         global $_conf;
-        $retValue = false;
+        $retValue = FALSE;
 
-        $strsql = "SELECT * FROM users WHERE userID = '".$userID."'";
+        $strsql = "SELECT * FROM users WHERE sysUID = '".$id."'";
 
         try{
             $_db = new DB();
@@ -43,11 +43,12 @@ class Users {
      * Get users
      *
      * @param boolean $only_active Get active users only
-     * @return array User data
+     * @param boolean $accept_mail
+     * @return array Users data
      */
-    public static function get_users($only_active=false){
+    public static function get_users($only_active=FALSE, $accept_mail=FALSE){
         global $_conf;
-        $retValue = false;
+        $retValue = FALSE;
 
         $strsql = "SELECT sysUID, userID, userEMail, userFirstName, userLastName FROM users";
 
@@ -55,6 +56,11 @@ class Users {
             $strsql .= " WHERE agreement_date <> ''
                     AND last_login IS NOT NULL
                     AND active = '1'";
+        }
+
+        if ( $accept_mail ) {
+            $operator = $only_active ? ' AND ' : ' WHERE ';
+            $strsql .= $operator . "accept_mail = '1'";
         }
 
         try{
@@ -83,7 +89,7 @@ class Users {
             $logger->log($e->getMessage(),PEAR_LOG_EMERG);
         }
         
-        return $res[0]['sysUID'] ? $res[0]['sysUID'] : false;
+        return $res[0]['sysUID'] ? $res[0]['sysUID'] : FALSE;
     }
 
     /**
@@ -94,7 +100,7 @@ class Users {
      */
     public static function is_active($userID){
         global $_conf;
-        $retValue = false;
+        $retValue = FALSE;
 
         $strsql = "SELECT count(userID) FROM users
                     WHERE userID = '".trim($userID)."'
@@ -110,7 +116,7 @@ class Users {
             $logger->log($e->getMessage(),PEAR_LOG_EMERG);
         }
 
-        if ( $res[0]['count(userID)'] >= 1 ) $retValue = true;
+        if ( $res[0]['count(userID)'] >= 1 ) $retValue = TRUE;
 
         return $retValue;
     }
@@ -119,12 +125,12 @@ class Users {
      *  Get the total count of users
      *
      * @param boolean $only_active Get active users only
-     * @param string $domain Domain name
+     * @param boolean $accept_mail
      * @return boolean|integer
      */
-    public static function get_users_count($only_active=false, $domain=false){
+    public static function get_users_count($only_active=FALSE, $accept_mail=FALSE){
         global $_conf;
-        $retValue = false;
+        $retValue = FALSE;
 
         $strsql= 'SELECT count(*) as total FROM users';
 
@@ -134,9 +140,9 @@ class Users {
                     AND active = '1'";
         }
 
-        if ( $domain ) {
+        if ( $accept_mail ) {
             $operator = $only_active ? ' AND ' : ' WHERE ';
-            $strsql .= $operator . "userID like '%@".$domain."'";
+            $strsql .= $operator . "accept_mail = '1'";
         }
 
         try{
