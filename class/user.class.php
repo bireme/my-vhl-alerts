@@ -42,15 +42,21 @@ class Users {
     /**
      * Get users
      *
+     * @param boolean $mautic_format Mautic format output
      * @param boolean $only_active Get active users only
      * @param boolean $accept_mail
      * @return array Users data
      */
-    public static function get_users($only_active=FALSE, $accept_mail=FALSE){
+    public static function get_users($mautic_format=FALSE,$only_active=FALSE, $accept_mail=FALSE){
         global $_conf;
         $retValue = FALSE;
 
-        $strsql = "SELECT sysUID, userID, userEMail, userFirstName, userLastName FROM users";
+        if ( $mautic_format ) {
+            $strsql = "SELECT userID, sysUID, sysUID AS my_vhl_id, userFirstName AS firstname, userLastName AS lastname, IF(userEMail = '', userID, userEMail) AS email, 1 AS my_vhl_user FROM users";
+        } else {
+            $strsql = "SELECT sysUID, userID, userEMail, userFirstName, userLastName FROM users";
+        }
+
 
         if ( $only_active ) {
             $strsql .= " WHERE agreement_date <> ''

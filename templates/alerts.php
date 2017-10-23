@@ -14,6 +14,6 @@ require_once __DIR__ . '/../class/alert.class.php';
 $id = ( array_key_exists("id", $_REQUEST) ) ? $_REQUEST['id'] : FALSE;
 
 $alerts = new Alerts();
-$alerts->makeTemplate($id);
+$alerts->make_template($id);
 
 ?>

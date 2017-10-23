@@ -1,0 +1,91 @@
+#!/usr/bin/env php
+<?php
+
+// Fix for hosts that do not have date.timezone set
+date_default_timezone_set('UTC');
+
+// if you don't want to setup permissions the proper way, just uncomment the following PHP line
+//umask(0000);
+
+if (function_exists('set_time_limit')) {
+    set_time_limit(0);
+}
+
+defined('IN_ALERTS_CONSOLE') or define('IN_ALERTS_CONSOLE', 1);
+
+define('ALERTS_ROOT_DIR', realpath(__DIR__));
+
+require_once __DIR__.'/class/user.class.php';
+require_once __DIR__.'/class/alert.class.php';
+require_once __DIR__.'/mautic/config/BasicAuth.php';
+require_once __DIR__.'/mautic/class/contact.class.php';
+
+if ($argc > 1) {
+    if ($argv[1] == 'init') {
+        // Recuperar lista de contatos do Mautic
+        $contacts = new Contacts;
+        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1', 0, 1);
+        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1', 0, $my_vhl_contacts['total']);
+
+        print("[Mautic] Total de contatos: " . $my_vhl_contacts['total'] . "\n");
+
+        // Remover lista de contatos do Mautic
+        if ( $my_vhl_contacts['total'] > 0 ) {
+            print("[Mautic] Removendo contatos...\n");
+
+            $ids = array_keys($my_vhl_contacts['contacts']);
+            $ids = array_chunk($ids, 100);
+
+            foreach ($ids as $i) {
+                $batch = $contacts->deleteBatch($i);
+            }
+
+            $tc = $contacts->listContacts('my_vhl_user:1', 0, 1);
+            $t = $my_vhl_contacts['total'] - $tc['total'];
+
+            print("[Mautic] Total de contatos deletados: " . $t . "\n");
+        }
+
+        print("--------------------------------------------------\n");
+
+        // Recuperar usuários da Minha BVS
+        $users = new Users;
+        $active_users = $users->get_users(TRUE, TRUE, TRUE);
+
+        print("[Minha BVS] Total de usuários ativos: " . count($active_users) . "\n");
+
+        // Adicionar usuários ativos da Minha BVS na lista de contatos do Mautic
+        if ( count($active_users) > 0 ) {
+            print("[Minha BVS] Checando usuários válidos...\n");
+
+            $valid_users = array();
+
+            // Checar quais usuários são válidos
+            foreach ($active_users as $user) {
+                $obj = new Alerts();
+                $is_valid = $obj->is_valid($user);
+
+                if ( $is_valid ) {
+                    $valid_users[] = $user;
+                }
+            }
+
+            print("[Minha BVS] Total de usuários válidos: " . count($valid_users) . "\n");
+
+            if ( $valid_users ) {
+                print("--------------------------------------------------\n");
+                print("[Mautic] Adicionando contatos válidos...\n");
+
+                $valid_users = array_chunk($valid_users, 50);
+
+                foreach ($valid_users as $vu) {
+                    $batch = $contacts->createBatch($vu);
+                }
+
+                $tc = $contacts->listContacts('my_vhl_user:1', 0, 1);
+
+                print("[Mautic] Total de contatos adicionados: " . $tc['total'] . "\n");
+            }
+        }
+    }
+}

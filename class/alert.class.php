@@ -13,10 +13,38 @@ require_once __DIR__ . '/profile.class.php';
 require_once __DIR__ . '/simdocs.class.php';
 require_once __DIR__ . '/template.class.php';
 
-
 class Alerts {
 
     public function __construct() {}
+
+    /**
+     * Check if user is valid
+     *
+     * @param array $user User data
+     * @return bool
+     */
+    public static function is_valid($user){
+        $count = 0;
+
+        $profiles = Profiles::get_profiles_list($user['sysUID']);
+        if ( !$profiles ) {
+            return FALSE;
+        }
+
+        foreach ($profiles as $profile) {
+            $similars = SimDocs::get_similars($user['userID'], $profile['profileName']);
+
+            if ( $similars ) {
+                $count++;
+            }
+        }
+
+        if ( $count == 0 ) {
+            return FALSE;
+        }
+
+        return TRUE;
+    }
 
     /**
      * Make user email template
@@ -24,7 +52,7 @@ class Alerts {
      * @param string $id User ID
      * @return string User email template
      */
-    public static function makeTemplate($id){
+    public static function make_template($id){
         /**
          * Defines an array for the topics templates.
          */
@@ -60,7 +88,7 @@ class Alerts {
             /**
              * Defines an array for the new similar.
              */
-            $similars = SimDocs::get_similars('wilson.moura', $profile['profileName']);
+            $similars = SimDocs::get_similars($user['userID'], $profile['profileName']);
 
             if ( $similars ) {
                 /**
