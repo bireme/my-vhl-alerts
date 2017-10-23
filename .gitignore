@@ -6,3 +6,5 @@ composer.phar
 # composer.lock
 
 /config/config.php
+/mautic/config/config.php
+/mautic/config/BasicAuth.php
