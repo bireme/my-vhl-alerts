@@ -47,6 +47,20 @@ class Alerts {
     }
 
     /**
+     * Get unsubscribe link
+     *
+     * @param string $token User token
+     * @return string
+     */
+    public static function getUnsubscribeLink($token){
+        $home = base64_encode(MY_VHL_DOMAIN);
+        $token = urlencode($token);
+        $url = MY_VHL_DOMAIN."/server/pub/userData.php?c=".$home."&ut=".$token."&acao=alertas";
+
+        return $url;
+    }
+
+    /**
      * Make user email template
      *
      * @param string $id User ID
@@ -119,6 +133,9 @@ class Alerts {
         }
 
         if ( $topicsTemplates ) {
+            $token = makeUserTK($user['userID'],$user['sysUID']);
+            $unsubscribe_link = self::getUnsubscribeLink($token);
+
             /**
              * Loads stylesheet template.
              */
@@ -136,9 +153,10 @@ class Alerts {
             $layout->set("title", "Minha BVS - Alertas");
             $layout->set("stylesheet", $stylesheet->output());
             $layout->set("content", $topicsContents);
+            $layout->set("unsubscribe_link", $unsubscribe_link);
             
             /**
-             * Finally we can output our final page.
+             * Output page.
              */
             echo $layout->output();
         } else {

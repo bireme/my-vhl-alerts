@@ -15,6 +15,6 @@
     		<h1 class="topics">Temas de Interesse</h1>
     		[@content]
     	</div>
-    	<div id="footer"></div>
+    	<div id="footer"><a href="[@unsubscribe_link]" target="_blank">Deixe de receber</a> este tipo de e-mail.</div>
     </body>
 </html>

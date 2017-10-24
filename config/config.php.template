@@ -25,6 +25,7 @@ define("DOCTYPE",'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 define("VERSION","0.1");
 define("DOCUMENTS_PER_PAGE","10"); /* pagination */
 define("VHL_SEARCH_PORTAL_DOMAIN","http://pesquisa.bvsalud.org");
+define("MY_VHL_DOMAIN","http://platserv.bvsalud.org");
 
 /* Regular Expressions */
 define("REGEXP_LANGUAGE","/^(pt)|(es)|(en)$/");
@@ -34,6 +35,11 @@ define("REGEXP_DOCID","/^[A-Za-z0-9_-]+$/");
 define("REGEXP_HTTP","/^(https?).+/");
 define("REGEXP_USER_NAME",'/[À-ÖØ-öø-ÿ\w\-]+/');
 define("REGEXP_DATE","/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/");
+
+/* CRYPT configuration */
+define('CRYPT_KEY',''); /* private */
+define('CRYPT_PUBKEY',''); /* public */
+define('CRYPT_SEPARATOR','');
 
 /* SimilarDocs service */
 define("SIMDOCS_GET_PROFILES", "http://serverofi5.bireme.br:8180/SDService/SDService?psId=#PSID#&showProfiles=");
@@ -45,7 +51,6 @@ define("EMAIL_FROM",'');
 define("EMAIL_FROMNAME",'');
 define("EMAIL_USERNAME",'');
 define("EMAIL_PASSWORD",'');
-define("EMAIL_ALERT_TEMPLATE",APP_BASEDIR.'/../templates/alerts.#LANG#.php');
 
 /* log configuration */
 $_conf = array('mode' => 0600, 'timeFormat' => '%X %x');

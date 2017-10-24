@@ -108,7 +108,7 @@ class SimDocs {
      */
     public static function get_similardoc_authors($authors){
         $authors = ( is_array($authors) ) ? implode("; ", $authors) : $authors;
-        return mysql_escape_mimic($authors);
+        return $authors;
     }
 
     /**
@@ -149,7 +149,7 @@ class SimDocs {
             if ( !empty($similar) ) $title = array_shift($similar);
         }
         
-        return mysql_escape_mimic($title);
+        return $title;
     }
 }
 ?>

@@ -25,22 +25,27 @@ function xmlstr_to_array($xmlProfile){
 }
 
 /**
- * Escaping MySQL strings without connection 
+ * Encrypt a given string
  *
- * @param string $unescaped Query unescaped
+ * @param string $text
+ * @param string $cKey Encryption salt
  * @return string
  */
-function mysql_escape_mimic($unescaped) {
-    $replacements = array(
-        "\x00" => '\x00',
-        "\n"   => '\n',
-        "\r"   => '\r',
-        "\\"   => '\\\\',
-        "'"    => "\'",
-        '"'    => '\"',
-        "\x1a" => '\x1a'
-    );
+function encrypt($text,$cKey=CRYPT_KEY){
+    return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256,
+                $cKey, $text, MCRYPT_MODE_ECB,
+                mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, 
+                        MCRYPT_MODE_ECB), MCRYPT_RAND))));    
+}
 
-    return strtr($unescaped,$replacements);
+/**
+ * Generate a user token
+ *
+ * @param string $userID
+ * @param string $sysUID
+ * @return string
+ */
+function makeUserTK($userID,$sysUID){
+    return encrypt($userID.CRYPT_SEPARATOR.$sysUID, CRYPT_PUBKEY);
 }
 ?>
