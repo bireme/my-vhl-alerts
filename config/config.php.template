@@ -42,6 +42,7 @@ define('CRYPT_PUBKEY',''); /* public */
 define('CRYPT_SEPARATOR','');
 
 /* SimilarDocs service */
+define("SIMDOCS_LAST_DAYS", 7);
 define("SIMDOCS_GET_PROFILES", "http://serverofi5.bireme.br:8180/SDService/SDService?psId=#PSID#&showProfiles=");
 define("SIMDOCS_SIMILARS_STRING", "http://serverofi5.bireme.br:8180/SDService/SDService?psId=#PSID#&getSimDocs=#PROFILE#");
 

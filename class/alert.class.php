@@ -105,11 +105,20 @@ class Alerts {
             $similars = SimDocs::get_similars($user['userID'], $profile['profileName']);
 
             if ( $similars ) {
+                $string = '';
+
                 /**
                  * Loop through the users and creates a template for each one.
                  */
-                foreach ($similars as $similar) {
+                foreach ($similars as $index => $similar) {
                     $title = SimDocs::get_similardoc_title($similar);
+
+                    if ( !empty($string) ) {
+                        if ( strtolower(rtrim($title, '.')) == strtolower(rtrim($string, '.')) ) {
+                            continue;
+                        }
+                    }
+
                     $url = SimDocs::generate_similardoc_url($similar['id']);
 
                     $docs = new Template("alerts_docs.tpl");
@@ -117,6 +126,8 @@ class Alerts {
                     $docs->set("url", $url);
 
                     $docsTemplates[] = $docs;
+
+                    $string = $title;
                 }
 
                 /**
