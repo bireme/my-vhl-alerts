@@ -47,7 +47,7 @@ class Users {
      * @param boolean $accept_mail
      * @return array Users data
      */
-    public static function get_users($mautic_format=FALSE,$only_active=FALSE, $accept_mail=FALSE){
+    public static function get_users($mautic_format=FALSE,$only_active=FALSE,$accept_mail=FALSE){
         global $_conf;
         $retValue = FALSE;
 

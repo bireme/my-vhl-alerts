@@ -16,7 +16,7 @@
  */
 function xmlstr_to_array($xmlProfile){
     /* load simpleXML object */
-    $xmlProfile = utf8_decode($xmlProfile);
+    $xmlProfile = utf8_decode(str_replace('&', '&amp;', $xmlProfile));
     $xml = simplexml_load_string($xmlProfile,'SimpleXMLElement',LIBXML_NOCDATA);
     $json = json_encode($xml);
     $result = json_decode($json,true);
