@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /**
  * Alerts Class
  *
@@ -64,9 +67,10 @@ class Alerts {
      * Make user email template
      *
      * @param string $id User ID
+     * @param string $lang Template language
      * @return string User email template
      */
-    public static function make_template($id){
+    public static function make_template($id, $lang){
         /**
          * Defines an array for the topics templates.
          */
@@ -146,6 +150,7 @@ class Alerts {
         if ( $topicsTemplates ) {
             $token = makeUserTK($user['userID'],$user['sysUID']);
             $unsubscribe_link = self::getUnsubscribeLink($token);
+            $texts = parse_ini_file("../ini/".$lang."/texts.ini");
 
             /**
              * Loads stylesheet template.
@@ -161,7 +166,11 @@ class Alerts {
              * Loads main template, settings its title and content.
              */
             $layout = new Template("alerts.tpl");
-            $layout->set("title", "Minha BVS - Alertas");
+            $layout->set("lang", $lang);
+            $layout->set("title", $texts['TITLE']);
+            $layout->set("subtitle", $texts['SUBTITLE']);
+            $layout->set("header", $texts['HEADER']);
+            $layout->set("footer", $texts['FOOTER']);
             $layout->set("stylesheet", $stylesheet->output());
             $layout->set("content", $topicsContents);
             $layout->set("unsubscribe_link", $unsubscribe_link);

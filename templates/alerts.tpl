@@ -6,15 +6,14 @@
             [@stylesheet]
         </style>
     </head>
-    <body>
+    <body class="general [@lang]">
     	<div id="header">
-    		<h1><a href="http://platserv.bvsalud.org" target="_blank">Minha BVS</a></h1>
-    		<h2>Lista de novos documentos</h2>
+    		<h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
     	</div>
     	<div id="content">
-    		<h1 class="topics">Temas de Interesse</h1>
+    		<h1 class="topics">[@subtitle]</h1>
     		[@content]
     	</div>
-    	<div id="footer"><a href="[@unsubscribe_link]" target="_blank">Deixe de receber</a> este tipo de e-mail.</div>
+    	<div id="footer"><a href="[@unsubscribe_link]" target="_blank">[@footer]</a></div>
     </body>
 </html>
