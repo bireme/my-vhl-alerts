@@ -1,118 +1,158 @@
-body {
-	margin: 0;
-	padding: 20px;
-	font-family: Arial;
-	color: #333333;
+BODY {
+    font-family: Arial, Verdana, Helvetica; 
+  	font-size: 13px;
 }
 
-img.logo {
-	float: left;
-	width: 40px;
-	height: 50px;
-	margin-right: 10px;
-	border: none;
-}
-
-#header {
-	margin-bottom: 20px;
-	padding: 10px;
-	border: solid 2px #666666;
-	background: #113311;
-}
-
-#header h1 {
-	margin: 0;
-	font-size: 2em;
-}
-
-#header h1 a {
-	color: #CCCCCC;
-}
-
-#header h2 {
-	margin: 0;
-	font-size: 1em;
-	font-style: italic;
-	color: #FFFFFF;
-}
-
-#menu {
-	clear: left;
-	margin-bottom: 20px;
-	padding: 5px;
-	border: solid 1px #CCCCCC;
-	background: #EEEEEE;
-	font-size: 0.8em;
-}
-
-#menu h1 {
-	margin: 0;
-	margin-bottom: 5px;
-	font-size: 1.2em;
-	color: #888888;
-	font-variant: small-caps;
-	letter-spacing: 1.2pt;
-}
-
-#menu ul
-, #menu li {
-	margin: 0;
-	padding: 0;
-	padding-left: 10px;
-	list-style: none;
+.general {
+      font-family: arial; 
+  	  width: 630px;
+  	  margin: 0px auto;
+      background: #FFF;
+      box-shadow: 0px 0px 6px 6px #E6E6E6;
 }
 
 #content {
-	border-left: solid 15px #226622;
-	border-right: solid 15px #226622;
-	padding-left: 10px;
-	padding-right: 10px;
+    padding: 30px;
 }
 
-#content h1 {
-	font-size: 1.8em;
+#content ul li {
+  	line-height: 20px;
+    list-style-type: none;
+    font-size: 14px;
+  	padding-bottom: 7px;
+    background: url(/alerts/images/arrow.png) no-repeat;
 }
 
-#content h1.topics {
-	text-align: center;
-	text-decoration: underline;
+#content ul li a {
+  	text-decoration: none;
+  	color: rgba(0, 0, 0, 0.61);
+  	padding-left: 20px;
+}
+
+#content ul li a:hover {
+  	text-decoration: underline;
+  	color: #069;
+}
+
+#content ul {
+    border-bottom: 1px solid #ded5d5;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+H1 {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #922900;
+    font-size: 140%;
+}
+
+H1 A {
+  	color: #000066;
+  	xtext-decoration: none;
+  	margin-top: 150px;
+}
+
+H2 {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #1f76a9;
+    font-size: 120%;
+    margin: 5px 0px 3px 0px;
+}
+
+H3.subTitle {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #666;
+    font-size: 100%;
+}
+
+.leftSide {
+  	font-size: 9pt;
+}
+
+.leftSide H2 {
+  	font-size: 160%;
+  	margin-top: 10px;
+}
+
+H3 {
+    font-family: Verdana, Geneva, sans-serif;
+   	color: #900;
+   	font-size: 140%;
+    margin: 0px 0px 5px 0px;
+}
+
+H4 a {
+  	font-family: Arial;
+    color: #900;
+   	font-size: 150%;
+}
+
+H5 {
+  	font-family: Verdana, Geneva, sans-serif;
+    color: #4A4A4A;
+   	font-size: 110%;
+    margin: 5px 0px 0px 0px;
+  	font-weight: normal;
+}
+
+H6 {
+  	font-family: Verdana, Geneva, sans-serif;
+    color: #2b5353;
+   	font-size: 140%;
+    margin: 0px 0px 5px 0px;
+}
+
+H6 span {
+  	font-family: Verdana, Geneva, sans-serif;
+    color: #d26106;
+   	font-size: 90%;
+    margin: 0px 0px 5px 0px;
+}
+
+.link {
+    font-family: Verdana, Geneva, sans-serif;
+    color: #069;
+    font-size: 110%;
+  	*font-size: 130%;
+    margin: 5px 0px 3px 0px;
+  	font-weight: bold;
+}
+
+
+P {
+    margin: 0px 0px 0px 0px;
+}
+
+.head {
+	font-family: Arial;
+	position: relative;
+	margin: 0px auto;
+	width: 630px;
+	text-align: right;
+	margin-bottom: 5px;
+}
+
+#header {
+  	height: 132px;
+}
+
+#header h1 {
+  	display: none;
+}
+
+body.pt #header {
+    background: url(/alerts/images/pt/banner_top_alerta.png) no-repeat;
+}
+
+body.es #header {
+    background: url(/alerts/images/es/banner_top_alerta.png) no-repeat;
+}
+
+body.en #header {
+    background: url(/alerts/images/en/banner_top_alerta.png) no-repeat;
 }
 
 #footer {
-	margin-top: 20px;
-	padding-top: 5px;
-	border-top: solid 2px #666666;
-	font-size: 0.8em;
-	color: #666666;
-	display: block;
-	text-align: center;
-}
-
-img.photo {
-	float: left;
-	margin-right: 10px;
-	width: 100px;
-	height: 100px;
-	border: solid 1px #CCCCCC;
-}
-
-table {
-	margin: 0;
-	padding: 0;
-	border: double 2px #226622;
-}
-
-th {
-	padding: 5px;
-	background: #226622;
-	color: #FFFFFF;
-	font-weight: bold;
-}
-
-td {
-	padding: 5px;
-}
-
-div.footer_clear {
-	clear: left;
+    text-align: center;
+    padding-bottom: 3em;
 }
