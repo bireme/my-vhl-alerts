@@ -1,37 +1,68 @@
-## Welcome to GitHub Pages
+## My VHL - Alerts
 
-You can use the [editor on GitHub](https://github.com/bireme/my-vhl-alerts/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Esse projeto permite criar mensagens de alertas para os usuários da Minha BVS, informando novos documentos nos temas de interesse.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Instalação
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+1. Instalar a ferramenta [Mautic](https://github.com/mautic/mautic)
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+git clone https://github.com/mautic/mautic.git
+```
+2. Instalar o repositório no diretório principal do Mautic (obrigatório nomear como `alerts`)
+```markdown
+cd mautic/
+git clone https://github.com/bireme/my-vhl-alerts.git alerts
+```
+3. Renomear e configurar os arquivos:
+```markdown
+- config/config.php.template -> config/config.php
+- mautic/config/config.php.template -> mautic/config/config.php
+- mautic/config/BasicAuth.php.template -> mautic/config/BasicAuth.php
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Workflow
 
-### Jekyll Themes
+#### Mautic
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/bireme/my-vhl-alerts/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- Criar os campos personalizados (nome - alias - tipo):
+  - ID Minha BVS - my_vhl_id - número
+  - É usuário da Minha BVS? - my_vhl_user - operador lógico
+- Criar o segmento de usuários Minha BVS
+  - Aplicar filtro com base no campo `my_vhl_user`
+- Criar a(s) campanha(s)
+  - A fonte de contatos deve ser o segmento de usuários Minha BVS
 
-### Support or Contact
+#### Alertas
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Importar a lista de usuários ativos da Minha BVS para o Mautic
+```markdown
+php console init
+```
+- Executar os _cron jobs_
+  - Atualizar segmentos
+  - Disparar campanha(s)
+
+OBS: Agendar os comandos no cron do servidor.
+
+### Cron Jobs
+
+Para que os comandos funcionem corretamente, é necessário copiar o arquivo `cronjobs` para o diretório `mautic/app/`
+
+#### Comandos:
+
+- Atualizar segmentos:
+```markdown
+./cronjobs segments update
+```
+- Atualizar campanha:
+```markdown
+./cronjobs campaigns rebuild <id_campanha>
+```
+- Disparar campanhas:
+```markdown
+./cronjobs campaigns trigger <id_campanha>
+```
+- Enviar mensagens (Marketing Messages):
+```markdown
+./cronjobs messages send
+```
