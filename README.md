@@ -8,12 +8,17 @@ Esse projeto permite criar mensagens de alertas para os usuários da Minha BVS, 
 ```markdown
 git clone https://github.com/mautic/mautic.git
 ```
-2. Instalar o repositório no diretório principal do Mautic (obrigatório nomear como `alerts`)
+2. Instalar o plugin [MauticAlertsBundle](https://github.com/bireme/MauticAlertsBundle)
+```markdown
+cd mautic/plugins
+git clone https://github.com/bireme/MauticAlertsBundle.git
+```
+3. Instalar o repositório no diretório principal do Mautic (obrigatório nomear como `alerts`)
 ```markdown
 cd mautic/
 git clone https://github.com/bireme/my-vhl-alerts.git alerts
 ```
-3. Renomear e configurar os arquivos:
+4. Renomear e configurar os arquivos:
 ```markdown
 - config/config.php.template -> config/config.php
 - mautic/config/config.php.template -> mautic/config/config.php
@@ -29,6 +34,8 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
   - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
 - Criar o segmento de usuários Minha BVS
   - Aplicar filtro com base no campo `my_vhl_user`
+- Criar o email para os alertas
+  - Utilizar o token `{alerts}` no corpo do email
 - Criar a(s) campanha(s)
   - A fonte de contatos deve ser o segmento de usuários Minha BVS
 
