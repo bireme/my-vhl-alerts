@@ -1,6 +1,6 @@
 ## My VHL - Alerts
 
-Esse projeto permite criar mensagens de alertas para os usuários da Minha BVS, informando novos documentos nos temas de interesse.
+**My VHL - Alerts** permite criar mensagens de alertas para os usuários da Minha BVS, informando novos documentos nos temas de interesse.
 
 ### Instalação
 
