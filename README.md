@@ -25,8 +25,8 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
 #### Mautic
 
 - Criar os campos personalizados (nome - alias - tipo):
-  - ID Minha BVS - my_vhl_id - número
-  - É usuário da Minha BVS? - my_vhl_user - operador lógico
+  - `ID Minha BVS - my_vhl_id - número`
+  - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
 - Criar o segmento de usuários Minha BVS
   - Aplicar filtro com base no campo `my_vhl_user`
 - Criar a(s) campanha(s)
@@ -40,7 +40,7 @@ php console init
 ```
 - Executar os _cron jobs_
   - Atualizar segmentos
-  - Disparar campanha(s)
+  - Disparar campanha
 
 OBS: Agendar os comandos no cron do servidor.
 
@@ -58,7 +58,7 @@ Para que os comandos funcionem corretamente, é necessário copiar o arquivo `cr
 ```markdown
 ./cronjobs campaigns rebuild <id_campanha>
 ```
-- Disparar campanhas:
+- Disparar campanha:
 ```markdown
 ./cronjobs campaigns trigger <id_campanha>
 ```
