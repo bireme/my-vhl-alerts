@@ -43,7 +43,7 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
 
 - Importar a lista de usuários ativos da Minha BVS para o Mautic
 ```markdown
-php console init
+$ php console init
 ```
 - Executar os _cron jobs_
   - Atualizar segmentos
@@ -59,17 +59,17 @@ Para que os comandos funcionem corretamente, é necessário copiar o arquivo `cr
 
 - Atualizar segmentos:
 ```markdown
-./cronjobs segments update
+$ ./cronjobs segments update
 ```
 - Atualizar campanha:
 ```markdown
-./cronjobs campaigns rebuild <id_campanha>
+$ ./cronjobs campaigns rebuild <id_campanha>
 ```
 - Disparar campanha:
 ```markdown
-./cronjobs campaigns trigger <id_campanha>
+$ ./cronjobs campaigns trigger <id_campanha>
 ```
 - Enviar mensagens (Marketing Messages):
 ```markdown
-./cronjobs messages send
+$ ./cronjobs messages send
 ```
