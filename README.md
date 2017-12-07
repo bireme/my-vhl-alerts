@@ -36,7 +36,7 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
   - Aplicar filtro com base no campo `my_vhl_user`
 - Criar o email para os alertas
   - Utilizar o token `{alerts}` no corpo do email
-- Criar a(s) campanha(s)
+- Criar a campanha
   - A fonte de contatos deve ser o segmento de usuários Minha BVS
 
 #### Alertas
