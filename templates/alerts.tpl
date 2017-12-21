@@ -6,8 +6,8 @@
             [@stylesheet]
         </style>
     </head>
-    <body class="general [@lang]">
-    	<div id="header">
+    <body class="general">
+    	<div id="header" class="[@lang]">
     		<h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
     	</div>
     	<div id="content">

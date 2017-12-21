@@ -20,7 +20,7 @@ BODY {
     list-style-type: none;
     font-size: 14px;
   	padding-bottom: 7px;
-    background: url(/alerts/images/arrow.png) no-repeat;
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/arrow.png) no-repeat;
 }
 
 #content ul li a {
@@ -140,16 +140,16 @@ P {
   	display: none;
 }
 
-body.pt #header {
-    background: url(/alerts/images/pt/banner_top_alerta.png) no-repeat;
+#header.pt {
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/pt/banner_top_alerta.png) no-repeat;
 }
 
-body.es #header {
-    background: url(/alerts/images/es/banner_top_alerta.png) no-repeat;
+#header.es {
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/es/banner_top_alerta.png) no-repeat;
 }
 
-body.en #header {
-    background: url(/alerts/images/en/banner_top_alerta.png) no-repeat;
+#header.en {
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/en/banner_top_alerta.png) no-repeat;
 }
 
 #footer {
