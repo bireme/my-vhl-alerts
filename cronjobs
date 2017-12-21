@@ -12,8 +12,4 @@ elif [ "$1" = "campaigns" ]; then
     elif [ "$2" = "trigger" ]; then
         php ${MAUTICPATH}/console mautic:campaigns:trigger --campaign-id=${3} -f --env=prod
     fi
-elif [ "$1" = "messages" ]; then
-    if [ "$2" = "send" ]; then
-        php ${MAUTICPATH}/console mautic:messages:send -f --env=prod
-    fi
 fi
