@@ -29,26 +29,26 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
 
 #### Mautic
 
-- Criar os campos personalizados (nome - alias - tipo):
-  - `ID Minha BVS - my_vhl_id - número`
-  - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
-- Criar o segmento de usuários Minha BVS
-  - Aplicar filtro com base no campo `my_vhl_user`
-- Criar o email para os alertas
-  - Utilizar o token `{alerts}` no corpo do email
-- Criar a campanha
-  - A fonte de contatos deve ser o segmento de usuários Minha BVS
+1. Criar os campos personalizados (nome - alias - tipo):
+    - `ID Minha BVS - my_vhl_id - número`
+    - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
+2. Criar o segmento de usuários Minha BVS
+    - Aplicar filtro com base no campo `my_vhl_user`
+3. Criar o email para os alertas
+    - Utilizar o token `{alerts}` no corpo do email
+4. Criar a campanha
+    - A fonte de contatos deve ser o segmento de usuários Minha BVS
 
 #### Alertas
 
-- Importar a lista de usuários ativos da Minha BVS para o Mautic
+1. Importar a lista de usuários ativos da Minha BVS para o Mautic
 ```markdown
 $ php console init
 ```
-- Executar os _cron jobs_
-  - Atualizar segmentos
-  - Atualizar campanha
-  - Disparar campanha
+2. Executar os _cron jobs_
+    1. Atualizar segmentos
+    2. Atualizar campanha
+    3. Disparar campanha
 
 OBS: Agendar os comandos no cron do servidor.
 
