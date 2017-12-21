@@ -47,6 +47,7 @@ $ php console init
 ```
 - Executar os _cron jobs_
   - Atualizar segmentos
+  - Atualizar campanha
   - Disparar campanha
 
 OBS: Agendar os comandos no cron do servidor.
@@ -68,8 +69,4 @@ $ ./cronjobs campaigns rebuild <id_campanha>
 - Disparar campanha:
 ```markdown
 $ ./cronjobs campaigns trigger <id_campanha>
-```
-- Enviar mensagens (Marketing Messages):
-```markdown
-$ ./cronjobs messages send
 ```
