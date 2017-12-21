@@ -140,15 +140,15 @@ P {
   	display: none;
 }
 
-#header.pt {
+div.general.pt #header {
     background: url(http://alertas.platserv.bvsalud.org/alerts/images/pt/banner_top_alerta.png) no-repeat;
 }
 
-#header.es {
+div.general.es #header {
     background: url(http://alertas.platserv.bvsalud.org/alerts/images/es/banner_top_alerta.png) no-repeat;
 }
 
-#header.en {
+div.general.en #header {
     background: url(http://alertas.platserv.bvsalud.org/alerts/images/en/banner_top_alerta.png) no-repeat;
 }
 

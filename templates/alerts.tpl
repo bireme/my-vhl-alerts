@@ -6,14 +6,16 @@
             [@stylesheet]
         </style>
     </head>
-    <body class="general">
-    	<div id="header" class="[@lang]">
+    <body>
+        <div class="general [@lang]">
+    	    <div id="header">
     		<h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
-    	</div>
-    	<div id="content">
+    	    </div>
+    	    <div id="content">
     		<h1 class="topics">[@subtitle]</h1>
-    		[@content]
-    	</div>
-    	<div id="footer"><a href="[@unsubscribe_link]" target="_blank">[@footer]</a></div>
+    		    [@content]
+    	    </div>
+    	    <div id="footer"><a href="[@unsubscribe_link]" target="_blank">[@footer]</a></div>
+        </div>
     </body>
 </html>
