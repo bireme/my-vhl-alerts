@@ -1,14 +1,15 @@
 BODY {
     font-family: Arial, Verdana, Helvetica; 
-  	font-size: 13px;
+    font-size: 13px;
 }
 
 .general {
-      font-family: arial; 
-  	  width: 630px;
-  	  margin: 0px auto;
-      background: #FFF;
-      box-shadow: 0px 0px 6px 6px #E6E6E6;
+    font-family: arial; 
+    width: 630px;
+    margin: 0px auto;
+    background: #FFF;
+    border: 1px solid #ded5d5;
+    box-shadow: 0 0 6px 6px #E6E6E6;
 }
 
 #content {
@@ -16,22 +17,22 @@ BODY {
 }
 
 #content ul li {
-  	line-height: 20px;
+    line-height: 20px;
     list-style-type: none;
     font-size: 14px;
-  	padding-bottom: 7px;
+    padding-bottom: 7px;
     background: url(http://alertas.platserv.bvsalud.org/alerts/images/arrow.png) no-repeat;
 }
 
 #content ul li a {
-  	text-decoration: none;
-  	color: rgba(0, 0, 0, 0.61);
-  	padding-left: 20px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.61);
+    padding-left: 20px;
 }
 
 #content ul li a:hover {
-  	text-decoration: underline;
-  	color: #069;
+    text-decoration: underline;
+    color: #069;
 }
 
 #content ul {
@@ -47,9 +48,9 @@ H1 {
 }
 
 H1 A {
-  	color: #000066;
-  	xtext-decoration: none;
-  	margin-top: 150px;
+    color: #000066;
+    text-decoration: none;
+    margin-top: 150px;
 }
 
 H2 {
@@ -66,78 +67,68 @@ H3.subTitle {
 }
 
 .leftSide {
-  	font-size: 9pt;
+    font-size: 9pt;
 }
 
 .leftSide H2 {
-  	font-size: 160%;
-  	margin-top: 10px;
+    font-size: 160%;
+    margin-top: 10px;
 }
 
 H3 {
     font-family: Verdana, Geneva, sans-serif;
-   	color: #900;
-   	font-size: 140%;
+    color: #900;
+    font-size: 140%;
     margin: 0px 0px 5px 0px;
 }
 
 H4 a {
-  	font-family: Arial;
+    font-family: Arial;
     color: #900;
-   	font-size: 150%;
+    font-size: 150%;
 }
 
 H5 {
-  	font-family: Verdana, Geneva, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     color: #4A4A4A;
-   	font-size: 110%;
+    font-size: 110%;
     margin: 5px 0px 0px 0px;
-  	font-weight: normal;
+    font-weight: normal;
 }
 
 H6 {
-  	font-family: Verdana, Geneva, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     color: #2b5353;
-   	font-size: 140%;
+    font-size: 140%;
     margin: 0px 0px 5px 0px;
 }
 
 H6 span {
-  	font-family: Verdana, Geneva, sans-serif;
+    font-family: Verdana, Geneva, sans-serif;
     color: #d26106;
-   	font-size: 90%;
+    font-size: 90%;
     margin: 0px 0px 5px 0px;
 }
-
-.link {
-    font-family: Verdana, Geneva, sans-serif;
-    color: #069;
-    font-size: 110%;
-  	*font-size: 130%;
-    margin: 5px 0px 3px 0px;
-  	font-weight: bold;
-}
-
 
 P {
     margin: 0px 0px 0px 0px;
 }
 
 .head {
-	font-family: Arial;
-	position: relative;
-	margin: 0px auto;
-	width: 630px;
-	text-align: right;
-	margin-bottom: 5px;
+    font-family: Arial;
+    position: relative;
+    margin: 0px auto;
+    width: 630px;
+    text-align: right;
+    margin-bottom: 5px;
 }
 
 #header {
-  	height: 132px;
+    height: 132px;
 }
 
 #header h1 {
-  	display: none;
+    display: none;
 }
 
 div.general.pt #header {
