@@ -57,7 +57,6 @@ class Users {
             $strsql = "SELECT sysUID, userID, userEMail, userFirstName, userLastName FROM users";
         }
 
-
         if ( $only_active ) {
             $strsql .= " WHERE agreement_date <> ''
                     AND last_login IS NOT NULL

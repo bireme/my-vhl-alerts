@@ -64,6 +64,23 @@ class Alerts {
     }
 
     /**
+     * Get regards text
+     *
+     * @param string $gender User gender
+     * @param string $text Regards text
+     * @return string
+     */
+    public static function getRegards($gender, $text){
+        $text = explode('|', $text);
+
+        $regards = array();
+        $regards['M'] = $text[0];
+        $regards['F'] = $text[1];
+
+        return $regards[$gender];
+    }
+
+    /**
      * Make user email template
      *
      * @param string $id User ID
@@ -151,6 +168,7 @@ class Alerts {
             $token = makeUserTK($user['userID'],$user['sysUID']);
             $unsubscribe_link = self::getUnsubscribeLink($token);
             $texts = parse_ini_file("../ini/".$lang."/texts.ini");
+            $regards = self::getRegards($user['userGender'], $texts['REGARDS']);
 
             /**
              * Loads stylesheet template.
@@ -170,7 +188,14 @@ class Alerts {
             $layout->set("title", $texts['TITLE']);
             $layout->set("subtitle", $texts['SUBTITLE']);
             $layout->set("header", $texts['HEADER']);
+            $layout->set("regards", $regards);
+            $layout->set("user", $user['userFirstName']);
+            $layout->set("description", $texts['DESCRIPTION']);
+            $layout->set("unsubscribe", $texts['UNSUBSCRIBE']);
+            $layout->set("att", $texts['ATT']);
+            $layout->set("signature", $texts['SIGNATURE']);
             $layout->set("footer", $texts['FOOTER']);
+            $layout->set("feedback", $texts['FEEDBACK']);
             $layout->set("stylesheet", $stylesheet->output());
             $layout->set("content", $topicsContents);
             $layout->set("unsubscribe_link", $unsubscribe_link);

@@ -12,10 +12,20 @@
     		<h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
     	    </div>
     	    <div id="content">
-    		<h1 class="topics">[@subtitle]</h1>
+                <p><b>[@regards] [@user],</b></p><br />
+                <p>[@description]</p><br />
+
     		    [@content]
+
+                <div class="att">
+                    <p>[@att]</p>
+                    <p>[@signature]</p>
+                </div>
     	    </div>
-    	    <div id="footer"><a href="[@unsubscribe_link]" target="_blank">[@footer]</a></div>
+    	    <div id="footer">
+                <p>[@footer]</p><br />
+                <p class="links"><a href="[@unsubscribe_link]" target="_blank">[@unsubscribe]</a> | <a href="http://feedback.bireme.org/feedback/my-vhl?version=2.10-77&error=1&site=servplat&lang=pt" target="_blank">[@feedback]</a></p>
+            </div>
         </div>
     </body>
 </html>

@@ -1,11 +1,13 @@
 BODY {
     font-family: Arial, Verdana, Helvetica; 
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #5c5c5b;
 }
 
 .general {
     font-family: arial; 
-    width: 630px;
+    width: 529px;
     margin: 0px auto;
     background: #FFF;
     border: 1px solid #ded5d5;
@@ -13,7 +15,7 @@ BODY {
 }
 
 #content {
-    padding: 30px;
+    padding: 10px 30px;
 }
 
 #content ul li {
@@ -44,7 +46,7 @@ BODY {
 H1 {
     font-family: Verdana, Geneva, sans-serif;
     color: #922900;
-    font-size: 140%;
+    font-size: 16px;
 }
 
 H1 A {
@@ -56,7 +58,7 @@ H1 A {
 H2 {
     font-family: Verdana, Geneva, sans-serif;
     color: #1f76a9;
-    font-size: 120%;
+    font-size: 14px;
     margin: 5px 0px 3px 0px;
 }
 
@@ -124,7 +126,7 @@ P {
 }
 
 #header {
-    height: 132px;
+    height: 98px;
 }
 
 #header h1 {
@@ -132,18 +134,27 @@ P {
 }
 
 div.general.pt #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/pt/banner_top_alerta.png) no-repeat;
+    background: url(http://localhost/alerts/images/pt/banner.png) no-repeat;
 }
 
 div.general.es #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/es/banner_top_alerta.png) no-repeat;
+    background: url(http://localhost/alerts/images/es/banner.png) no-repeat;
 }
 
 div.general.en #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/en/banner_top_alerta.png) no-repeat;
+    background: url(http://localhost/alerts/images/en/banner.png) no-repeat;
 }
 
 #footer {
+    padding: 10px 28px;
+}
+
+#footer p {
+    font-size: 11px;
+    line-height: 13px;
+}
+
+#footer .links {
+    font-size: 9px;
     text-align: center;
-    padding-bottom: 3em;
 }
