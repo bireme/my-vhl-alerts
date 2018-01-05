@@ -134,15 +134,15 @@ P {
 }
 
 div.general.pt #header {
-    background: url(http://localhost/alerts/images/pt/banner.png) no-repeat;
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/pt/banner.png) no-repeat;
 }
 
 div.general.es #header {
-    background: url(http://localhost/alerts/images/es/banner.png) no-repeat;
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/es/banner.png) no-repeat;
 }
 
 div.general.en #header {
-    background: url(http://localhost/alerts/images/en/banner.png) no-repeat;
+    background: url(http://alertas.platserv.bvsalud.org/alerts/images/en/banner.png) no-repeat;
 }
 
 #footer {
