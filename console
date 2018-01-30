@@ -26,29 +26,23 @@ if ($argc > 1) {
 
         // Recuperar lista de contatos do Mautic
         $contacts = new Contacts;
-        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1', 0, 1);
-        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1', 0, $my_vhl_contacts['total']);
+        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1 send_alert:1', 0, 1);
+        $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1 send_alert:1', 0, $my_vhl_contacts['total']);
 
-        print("[Mautic] Total de contatos: " . $my_vhl_contacts['total'] . "\n");
-
-        // Remover lista de contatos do Mautic
+        // Normalizar lista de contatos do Mautic
         if ( $my_vhl_contacts['total'] > 0 ) {
-            print("[Mautic] Removendo contatos...\n");
+            print("[Mautic] Normalizando contatos...\n");
 
             $ids = array_keys($my_vhl_contacts['contacts']);
-            $ids = array_chunk($ids, 100);
 
             foreach ($ids as $i) {
-                $batch = $contacts->deleteBatch($i);
+                $data = array( 'send_alert' => FALSE );
+                $contact = $contacts->editContact($i, $data);
             }
 
-            $tc = $contacts->listContacts('my_vhl_user:1', 0, 1);
-            $t = $my_vhl_contacts['total'] - $tc['total'];
-
-            print("[Mautic] Total de contatos deletados: " . $t . "\n");
+            print("[Mautic] Total de contatos: " . $my_vhl_contacts['total'] . "\n");
+            print("--------------------------------------------------\n");
         }
-
-        print("--------------------------------------------------\n");
 
         // Recuperar usuários da Minha BVS
         $users = new Users;
@@ -56,7 +50,7 @@ if ($argc > 1) {
 
         print("[Minha BVS] Total de usuários ativos: " . count($active_users) . "\n");
 
-        // Adicionar usuários ativos da Minha BVS na lista de contatos do Mautic
+        // Atualizar lista de contatos do Mautic
         if ( count($active_users) > 0 ) {
             print("[Minha BVS] Checando usuários válidos...\n");
 
@@ -76,17 +70,23 @@ if ($argc > 1) {
 
             if ( $valid_users ) {
                 print("--------------------------------------------------\n");
-                print("[Mautic] Adicionando contatos válidos...\n");
-
-                $valid_users = array_chunk($valid_users, 50);
+                print("[Mautic] Atualizando lista de contatos...\n");
 
                 foreach ($valid_users as $vu) {
-                    $batch = $contacts->createBatch($vu);
+                    $contact = $contacts->listContacts('my_vhl_user:1 email:'.$vu['email'], 0, 1);
+
+                    if ( $contact['total'] == 1 ) {
+                        $id = key($contact['contacts']);
+                        $data = array( 'send_alert' => TRUE );
+                        $contact = $contacts->editContact($id, $data);
+                    } else {
+                        $contact = $contacts->createContact($vu, TRUE);
+                    }
                 }
 
-                $tc = $contacts->listContacts('my_vhl_user:1', 0, 1);
+                $total_contacts = $contacts->listContacts('my_vhl_user:1 send_alert:1', 0, 1);
 
-                print("[Mautic] Total de contatos adicionados: " . $tc['total'] . "\n");
+                print("[Mautic] Total de contatos: " . $total_contacts['total'] . "\n");
             }
         }
 

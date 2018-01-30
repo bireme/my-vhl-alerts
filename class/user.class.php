@@ -52,7 +52,7 @@ class Users {
         $retValue = FALSE;
 
         if ( $mautic_format ) {
-            $strsql = "SELECT userID, sysUID, sysUID AS my_vhl_id, userFirstName AS firstname, userLastName AS lastname, IF(userEMail = '', userID, userEMail) AS email, 1 AS my_vhl_user FROM users";
+            $strsql = "SELECT userID, sysUID, sysUID AS my_vhl_id, userFirstName AS firstname, userLastName AS lastname, IF(userEMail = '', userID, userEMail) AS email, 1 AS my_vhl_user, 1 AS send_alert FROM users";
         } else {
             $strsql = "SELECT sysUID, userID, userEMail, userFirstName, userLastName FROM users";
         }

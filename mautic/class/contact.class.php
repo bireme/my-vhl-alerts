@@ -72,16 +72,20 @@ class Contacts {
      * Create contact in Mautic.
      *
      * @param array $user User data
+     * @param boolean $mautic_format Mautic format data
      * @return array
      */
-    public function createContact($user) {
-        $data = array(
-            'firstname'   => $user['userFirstName'],
-            'lastname'    => $user['userLastName'],
-            'email'       => ( empty($user['userEMail']) ) ? $user['userID'] : $user['userEMail'],
-            'my_vhl_user' => TRUE,
-            'my_vhl_id'   => $user['sysUID'],
-        );
+    public function createContact($user, $mautic_format=FALSE) {
+        if ( !$mautic_format ) {
+            $user = array(
+                'firstname'   => $user['userFirstName'],
+                'lastname'    => $user['userLastName'],
+                'email'       => ( empty($user['userEMail']) ) ? $user['userID'] : $user['userEMail'],
+                'send_alert' => TRUE,
+                'my_vhl_user' => TRUE,
+                'my_vhl_id'   => $user['sysUID'],
+            );
+        }
 
         $contact = $this->contactApi->create($user);
         
@@ -96,6 +100,29 @@ class Contacts {
      */
     public function createBatch($parameters) {
         $contacts = $this->contactApi->createBatch($parameters);
+        return $contacts;
+    }
+
+    /**
+     * Edit contact in Mautic.
+     *
+     * @param array $user User data
+     * @return array
+     */
+    public function editContact($id, $user, $createIfNotExists=FALSE) {
+        $contact = $this->contactApi->edit($id, $user, $createIfNotExists);
+        return $contact;
+    }
+
+    /**
+     * Edit a batch of contacts.
+     *
+     * @param array $parameters
+     * @param bool  $createIfNotExists
+     * @return array|mixed
+     */
+    public function editBatch($parameters, $createIfNotExists=FALSE) {
+        $contacts = $this->contactApi->editBatch($parameters, $createIfNotExists);
         return $contacts;
     }
 
