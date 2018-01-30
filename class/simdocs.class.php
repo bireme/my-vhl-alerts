@@ -116,13 +116,17 @@ class SimDocs {
      * Get the similar document title
      *
      * @param array $similar
-     * @return string $title Similar document title
+     * @param string $lang
+     * @return string $title
      */
-    public static function get_similardoc_title($similar){
+    public static function get_similardoc_title($similar, $lang='pt'){
         $key = '';
         $title = '';
+        $lang = 'ti_'.$lang;
 
-        if ( array_key_exists('ti_pt', $similar) ) {
+        if ( array_key_exists($lang, $similar) ) {
+            $title = $similar[$lang];
+        } elseif ( array_key_exists('ti_pt', $similar) ) {
             $title = $similar['ti_pt'];
         } elseif ( array_key_exists('ti_es', $similar) ) {
             $title = $similar['ti_es'];

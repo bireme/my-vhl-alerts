@@ -132,7 +132,7 @@ class Alerts {
                  * Loop through the users and creates a template for each one.
                  */
                 foreach ($similars as $index => $similar) {
-                    $title = SimDocs::get_similardoc_title($similar);
+                    $title = SimDocs::get_similardoc_title($similar, $lang);
 
                     if ( !empty($string) ) {
                         if ( strtolower(rtrim($title, '.')) == strtolower(rtrim($string, '.')) ) {
