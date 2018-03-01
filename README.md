@@ -71,3 +71,7 @@ $ ./cronjobs campaigns rebuild <id_campanha>
 ```markdown
 $ ./cronjobs campaigns trigger <id_campanha>
 ```
+
+#### Cronfig:
+
+Caso queria executar os cron jobs pela área administrativa do Mautic, basta instalar o plugin [Cronfig](https://github.com/cronfig/mautic-cronfig)
