@@ -53,12 +53,13 @@ class Alerts {
      * Get unsubscribe link
      *
      * @param string $token User token
+     * @param string $lang Template language
      * @return string
      */
-    public static function getUnsubscribeLink($token){
+    public static function getUnsubscribeLink($token, $lang){
         $home = base64_encode(MY_VHL_DOMAIN);
         $token = urlencode($token);
-        $url = MY_VHL_DOMAIN."/server/pub/userData.php?c=".$home."&ut=".$token."&acao=alertas";
+        $url = MY_VHL_DOMAIN."/server/pub/userData.php?c=".$home."&ut=".$token."&acao=alertas&lang=".$lang;
 
         return $url;
     }
@@ -166,7 +167,7 @@ class Alerts {
 
         if ( $topicsTemplates ) {
             $token = makeUserTK($user['userID'],$user['sysUID']);
-            $unsubscribe_link = self::getUnsubscribeLink($token);
+            $unsubscribe_link = self::getUnsubscribeLink($token, $lang);
             $texts = parse_ini_file("../ini/".$lang."/texts.ini");
             $regards = self::getRegards($user['userGender'], $texts['REGARDS']);
 

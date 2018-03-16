@@ -9,7 +9,8 @@
     <body>
         <div class="general [@lang]">
     	    <div id="header">
-    		<h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
+                <img src="http://alertas.platserv.bvsalud.org/alerts/images/[@lang]/banner.png" alt="Minha BVS" class="banner" />
+    		    <h1><a href="http://platserv.bvsalud.org" target="_blank">[@header]</a></h1>
     	    </div>
     	    <div id="content">
                 <p><b>[@regards] [@user],</b></p><br />
@@ -24,7 +25,7 @@
     	    </div>
     	    <div id="footer">
                 <p>[@footer]</p><br />
-                <p class="links"><a href="[@unsubscribe_link]" target="_blank">[@unsubscribe]</a> | <a href="http://feedback.bireme.org/feedback/my-vhl?version=2.10-77&error=1&site=servplat&lang=pt" target="_blank">[@feedback]</a></p>
+                <p class="links"><a href="[@unsubscribe_link]" target="_blank">[@unsubscribe]</a> | <a href="http://feedback.bireme.org/feedback/my-vhl?version=2.10-77&error=1&site=servplat&lang=[@lang]" target="_blank">[@feedback]</a></p>
             </div>
         </div>
     </body>

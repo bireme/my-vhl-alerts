@@ -125,24 +125,8 @@ P {
     margin-bottom: 5px;
 }
 
-#header {
-    height: 100px;
-}
-
 #header h1 {
     display: none;
-}
-
-div.general.pt #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/pt/banner.png) no-repeat center top;
-}
-
-div.general.es #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/es/banner.png) no-repeat center top;
-}
-
-div.general.en #header {
-    background: url(http://alertas.platserv.bvsalud.org/alerts/images/en/banner.png) no-repeat center top;
 }
 
 #footer {
