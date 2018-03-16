@@ -32,6 +32,7 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
 1. Criar os campos personalizados (nome - alias - tipo):
     - `ID Minha BVS - my_vhl_id - número`
     - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
+    - `Envio de Alerta - send_alert - operador lógico`
 2. Criar o segmento de usuários Minha BVS
     - Aplicar filtro com base no campo `my_vhl_user`
 3. Criar o email para os alertas
@@ -70,3 +71,7 @@ $ ./cronjobs campaigns rebuild <id_campanha>
 ```markdown
 $ ./cronjobs campaigns trigger <id_campanha>
 ```
+
+#### Cronfig
+
+Caso queria executar os _cron jobs_ pelo painel da área administrativa do Mautic, basta instalar o plugin [Cronfig](https://github.com/cronfig/mautic-cronfig)
