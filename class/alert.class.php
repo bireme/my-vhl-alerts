@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 /**
  * Alerts Class
  *
@@ -30,6 +27,7 @@ class Alerts {
         $count = 0;
 
         $profiles = Profiles::get_profiles_list($user['sysUID']);
+        
         if ( !$profiles ) {
             return FALSE;
         }
