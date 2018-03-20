@@ -80,7 +80,7 @@ if ($argc > 1) {
                         $data = array( 'send_alert' => TRUE );
                         $contact = $contacts->editContact($id, $data);
                     } else {
-                        $vu['alerts_lang'] = getAlertsLanguage($user['userCountry']);
+                        $vu['alerts_lang'] = getAlertsLanguage($vu['userCountry']);
                         $contact = $contacts->createContact($vu, TRUE);
                     }
                 }
