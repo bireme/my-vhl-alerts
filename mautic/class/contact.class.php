@@ -81,9 +81,10 @@ class Contacts {
                 'firstname'   => $user['userFirstName'],
                 'lastname'    => $user['userLastName'],
                 'email'       => ( empty($user['userEMail']) ) ? $user['userID'] : $user['userEMail'],
-                'send_alert' => TRUE,
+                'country'     => $user['userCountry'],
+                'send_alert'  => TRUE,
                 'my_vhl_user' => TRUE,
-                'my_vhl_id'   => $user['sysUID'],
+                'my_vhl_id'   => $user['sysUID']
             );
         }
 

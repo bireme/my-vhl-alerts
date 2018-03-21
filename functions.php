@@ -56,46 +56,10 @@ function makeUserTK($userID,$sysUID){
  * @return string
  */
 function getAlertsLanguage($country){
+    global $c_pt;
+    global $c_es;
+    
     $code = 'en';
-
-    // Countries that speak Portuguese
-    $c_pt = array(
-        "PT" => "Portugal",
-        "GW" => "Guiné-Bissau",
-        "AO" => "Angola",
-        "CV" => "Cabo Verde",
-        "BR" => "Brasil",
-        "MZ" => "Moçambique",
-        "TL" => "Timor Leste",
-        "ST" => "São Tomé e Príncipe",
-        "GQ" => "Guiné Equatorial",
-        "MO" => "Macau"
-    );
-
-    // Countries that speak Spanish
-    $c_es = array(
-        "AR" => "Argentina",
-        "PY" => "Paraguai",
-        "UY" => "Uruguai",
-        "CO" => "Colômbia",
-        "PE" => "Peru",
-        "CL" => "Chile",
-        "EC" => "Equador",
-        "BO" => "Bolívia",
-        "VE" => "Venezuela",
-        "SV" => "El Salvador",
-        "NI" => "Nicarágua",
-        "GT" => "Guatemala",
-        "CR" => "Costa Rica",
-        "CU" => "Cuba",
-        "GQ" => "Guiné Equatorial",
-        "HN" => "Honduras",
-        "PA" => "Panamá",
-        "DO" => "República Dominicana",
-        "MX" => "México",
-        "ES" => "Espanha",
-        "PR" => "Porto Rico"
-    );
 
     if ( array_key_exists($country, $c_pt) ) {
         $code = 'pt';
