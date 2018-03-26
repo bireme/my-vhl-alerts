@@ -22,7 +22,7 @@ define("ACCEPTED_CHARSETS","UTF-8,ISO-8859-1"); /* input charsets */
 define("SYS_CHARSET","UTF-8"); /* internal sys charset */
 define("DOCTYPE",'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">');
-define("VERSION","0.1");
+define("VERSION","1.0.0");
 define("DOCUMENTS_PER_PAGE","10"); /* pagination */
 define("VHL_SEARCH_PORTAL_DOMAIN","http://pesquisa.bvsalud.org");
 define("MY_VHL_DOMAIN","http://platserv.bvsalud.org");
