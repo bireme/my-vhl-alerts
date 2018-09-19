@@ -77,7 +77,7 @@ if ($argc > 1) {
 
                     if ( $contact['total'] == 1 ) {
                         $id = key($contact['contacts']);
-                        $data = array( 'send_alert' => TRUE );
+                        $data = array( 'send_alert' => TRUE, 'my_vhl_id' => $vu['my_vhl_id'] );
                         $contact = $contacts->editContact($id, $data);
                     } else {
                         $vu['alerts_lang'] = getAlertsLanguage($vu['country']);
