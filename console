@@ -73,14 +73,15 @@ if ($argc > 1) {
                 print("[Mautic] Atualizando lista de contatos...\n");
 
                 foreach ($valid_users as $vu) {
+                    $alerts_lang = getAlertsLanguage($vu['country']);
                     $contact = $contacts->listContacts('my_vhl_user:1 email:'.$vu['email'], 0, 1);
 
                     if ( $contact['total'] == 1 ) {
                         $id = key($contact['contacts']);
-                        $data = array( 'send_alert' => TRUE, 'my_vhl_id' => $vu['my_vhl_id'] );
+                        $data = array( 'send_alert' => TRUE, 'my_vhl_id' => $vu['my_vhl_id'], 'alerts_lang' => $alerts_lang );
                         $contact = $contacts->editContact($id, $data);
                     } else {
-                        $vu['alerts_lang'] = getAlertsLanguage($vu['country']);
+                        $vu['alerts_lang'] = $alerts_lang;
                         $vu['country'] = $countries[$vu['country']]['en'];
                         $contact = $contacts->createContact($vu, TRUE);
                     }
