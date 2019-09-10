@@ -62,7 +62,8 @@ class SimDocs {
 
         $similar = str_replace("#PSID#",$userID,SIMDOCS_SIMILARS_STRING);
         $similar = str_replace("#PROFILE#",urlencode($profile),$similar);
-        $similar = $similar.'&lastDays='.SIMDOCS_LAST_DAYS;
+        $similar = $similar.'&considerDate=';
+        // $similar = $similar.'&lastDays='.SIMDOCS_LAST_DAYS;
 
         $opts = array(
             'http' => array(
