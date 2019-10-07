@@ -204,7 +204,41 @@ class Alerts {
              */
             echo $layout->output();
         } else {
-            echo "Nenhum documento encontrado.";
+            $token = makeUserTK($user['userID'],$user['sysUID']);
+            $unsubscribe_link = self::getUnsubscribeLink($token, $lang);
+            $texts = parse_ini_file("../ini/".$lang."/texts.ini");
+            $regards = self::getRegards($user['userGender'], $texts['REGARDS']);
+
+            /**
+             * Loads stylesheet template.
+             */
+            $stylesheet = new Template("style.css");
+
+            /**
+             * Loads main template, settings its title and content.
+             */
+            $layout = new Template("alerts_error.tpl");
+            $layout->set("lang", $lang);
+            $layout->set("title", $texts['TITLE']);
+            $layout->set("subtitle", $texts['SUBTITLE']);
+            $layout->set("header", $texts['HEADER']);
+            $layout->set("regards", $regards);
+            $layout->set("user", $user['userFirstName']);
+            $layout->set("description", $texts['DESCRIPTION']);
+            $layout->set("unsubscribe", $texts['UNSUBSCRIBE']);
+            $layout->set("att", $texts['ATT']);
+            $layout->set("signature", $texts['SIGNATURE']);
+            $layout->set("footer", $texts['FOOTER']);
+            $layout->set("feedback", $texts['FEEDBACK']);
+            $layout->set("stylesheet", $stylesheet->output());
+            $layout->set("content", $texts['ERROR']);
+            $layout->set("url", MY_VHL_DOMAIN);
+            $layout->set("unsubscribe_link", $unsubscribe_link);
+            
+            /**
+             * Output page.
+             */
+            echo $layout->output();
         }
     }
 

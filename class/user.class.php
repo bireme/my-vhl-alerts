@@ -153,7 +153,7 @@ class Users {
         try{
             $_db = new DB();
             $res = $_db->exec_query($strsql);
-        }catch(DBClassException $e){
+        }catch(DBException $e){
             $logger = &Log::singleton('file', LOG_FILE, __CLASS__, $_conf);
             $logger->log($e->getMessage(),PEAR_LOG_EMERG);
         }
