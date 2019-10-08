@@ -20,9 +20,9 @@ git clone https://github.com/bireme/my-vhl-alerts.git alerts
 ```
 4. Renomear e configurar os arquivos:
 ```markdown
-- config/config.php.template -> config/config.php
-- mautic/config/config.php.template -> mautic/config/config.php
-- mautic/config/BasicAuth.php.template -> mautic/config/BasicAuth.php
+config/config.php.template -> config/config.php
+mautic/config/config.php.template -> mautic/config/config.php
+mautic/config/BasicAuth.php.template -> mautic/config/BasicAuth.php
 ```
 
 ### Workflow
@@ -79,3 +79,5 @@ $ ./cronjobs campaigns trigger <id_campanha>
 #### Cronfig
 
 Caso queria executar os _cron jobs_ pelo painel da área administrativa do Mautic, basta instalar o plugin [Cronfig](https://github.com/cronfig/mautic-cronfig)
+
+**Site do projeto:** https://bireme.github.io/my-vhl-alerts/
