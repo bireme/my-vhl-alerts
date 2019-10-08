@@ -131,35 +131,39 @@ class Alerts {
                  * Loop through the users and creates a template for each one.
                  */
                 foreach ($similars as $index => $similar) {
-                    $title = SimDocs::get_similardoc_title($similar, $lang);
+                    if ( !$similar['total'] ) {
+                        $title = SimDocs::get_similardoc_title($similar, $lang);
 
-                    if ( !empty($string) ) {
-                        if ( strtolower(rtrim($title, '.')) == strtolower(rtrim($string, '.')) ) {
-                            continue;
+                        if ( !empty($string) ) {
+                            if ( strtolower(rtrim($title, '.')) == strtolower(rtrim($string, '.')) ) {
+                                continue;
+                            }
                         }
+
+                        $url = SimDocs::generate_similardoc_url($similar['id']);
+
+                        $docs = new Template("alerts_docs.tpl");
+                        $docs->set("title", $title);
+                        $docs->set("url", $url);
+
+                        $docsTemplates[] = $docs;
+
+                        $string = $title;
                     }
-
-                    $url = SimDocs::generate_similardoc_url($similar['id']);
-
-                    $docs = new Template("alerts_docs.tpl");
-                    $docs->set("title", $title);
-                    $docs->set("url", $url);
-
-                    $docsTemplates[] = $docs;
-
-                    $string = $title;
                 }
 
-                /**
-                 * Merges all our docs templates into a single variable.
-                 */
-                $docsContents = Template::merge($docsTemplates);
+                if ( $docsTemplates ) {
+                    /**
+                     * Merges all our docs templates into a single variable.
+                     */
+                    $docsContents = Template::merge($docsTemplates);
 
-                $topic = new Template("alerts_topics.tpl");
-                $topic->set("topic", $profile['profileName']);
-                $topic->set("docs", $docsContents);
+                    $topic = new Template("alerts_topics.tpl");
+                    $topic->set("topic", $profile['profileName']);
+                    $topic->set("docs", $docsContents);
 
-                $topicsTemplates[] = $topic;
+                    $topicsTemplates[] = $topic;
+                }
             }
         }
 
