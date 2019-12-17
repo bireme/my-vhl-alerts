@@ -143,7 +143,7 @@ class Alerts {
                         $url = SimDocs::generate_similardoc_url($similar['id']);
 
                         $docs = new Template("alerts_docs.tpl");
-                        $docs->set("title", $title);
+                        $docs->set("title", htmlspecialchars_decode($title));
                         $docs->set("url", $url);
 
                         $docsTemplates[] = $docs;
