@@ -26,13 +26,17 @@ class DB {
     private $_user = DB_USERNAME;
     private $_password = DB_PASSWORD;
     private $_db = DB_DBNAME;
+    private $_port = DB_PORT;
 
     /**
      * Create the connection with the database.
      */
     public function __construct(){
-        $this->_conn = mysqli_connect($this->_host, $this->_user
-            , $this->_password);
+        if ( $this->_port ) {
+            $this->_conn = mysqli_connect($this->_host, $this->_user, $this->_password, '', $this->_port);
+        } else {
+            $this->_conn = mysqli_connect($this->_host, $this->_user, $this->_password);
+        }
 
         if(!$this->_conn){
             throw new DBException('Err:connect:'.mysqli_error($this->_conn));

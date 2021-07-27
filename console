@@ -11,8 +11,8 @@ if (function_exists('set_time_limit')) {
     set_time_limit(0);
 }
 
-defined('IN_ALERTS_CONSOLE') or define('IN_ALERTS_CONSOLE', 1);
-
+defined('ALERTS_CONSOLE') or define('ALERTS_CONSOLE', true);
+defined('ALERTS_DEBUG') or define('ALERTS_DEBUG', false);
 define('ALERTS_ROOT_DIR', realpath(__DIR__));
 
 require_once __DIR__.'/class/user.class.php';
@@ -30,7 +30,7 @@ if ($argc > 1) {
         $my_vhl_contacts = $contacts->listContacts('my_vhl_user:1 send_alert:1', 0, $my_vhl_contacts['total']);
 
         // Normalizar lista de contatos do Mautic
-        if ( $my_vhl_contacts['total'] > 0 ) {
+        if ( array_key_exists('total', $my_vhl_contacts) && $my_vhl_contacts['total'] > 0 ) {
             print("[Mautic] Normalizando contatos...\n");
 
             $ids = array_keys($my_vhl_contacts['contacts']);
@@ -76,7 +76,17 @@ if ($argc > 1) {
                     $alerts_lang = getAlertsLanguage($vu['country']);
                     $contact = $contacts->listContacts('my_vhl_user:1 email:'.$vu['email'], 0, 1);
 
-                    if ( $contact['total'] == 1 ) {
+                    if ( ALERTS_DEBUG ) {
+                        if ( !isset($vu_keys) ) {
+                            $vu_keys = array_keys($vu);
+                            echo "\n"; echo implode('|', $vu_keys); echo "\n";
+                            print("----------------------------------------------------------------------------------------------------\n");
+                        }
+
+                        vprintf('%s|%d|%d|%s|%s|%s|%d|%d|%s', $vu); echo "\n";
+                    }
+
+                    if ( array_key_exists('total', $contact) && $contact['total'] == 1 ) {
                         $id = key($contact['contacts']);
                         $data = array( 'send_alert' => TRUE, 'my_vhl_id' => $vu['my_vhl_id'], 'alerts_lang' => $alerts_lang );
                         $contact = $contacts->editContact($id, $data);
@@ -89,7 +99,17 @@ if ($argc > 1) {
 
                 $total_contacts = $contacts->listContacts('my_vhl_user:1 send_alert:1', 0, 1);
 
-                print("[Mautic] Total de contatos: " . $total_contacts['total'] . "\n");
+                if ( array_key_exists('total', $total_contacts) ) {
+                    $tc = $total_contacts['total'];
+                } else {
+                    $tc = 0;
+                }
+
+                if ( ALERTS_DEBUG ) {
+                    print("\n[Mautic] Total de contatos: " . $tc . "\n");
+                } else { 
+                    print("[Mautic] Total de contatos: " . $tc . "\n");
+                }
             }
         }
 

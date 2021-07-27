@@ -30,13 +30,20 @@ mautic/config/BasicAuth.php.template >> mautic/config/BasicAuth.php
 #### Mautic
 
 1. Criar os campos personalizados (nome - alias - tipo):
-    - `ID Minha BVS - my_vhl_id - número`
-    - `É usuário da Minha BVS? - my_vhl_user - operador lógico`
+    - `ID MinhaBVS - my_vhl_id - número`
+    - `É usuário da MinhaBVS? - my_vhl_user - operador lógico`
     - `Envio de Alerta - send_alert - operador lógico`
+    - `Ativo - my_vhl_active - operador lógico`
     - `Idioma dos Alertas - alerts_lang - select`
         - `Português | pt`
         - `Espanhol | es`
         - `Inglês | en`
+    - `Origem da MinhaBVS - my_vhl_source - select`
+        - `LDAP | ldap`
+        - `BIREME Accounts | bireme_accounts`
+        - `Google | google`
+        - `Facebook | facebook`
+        - `e-BlueInfo | e-blueinfo`
 2. Criar o segmento de usuários Minha BVS
     - Aplicar filtro com base nos campos `my_vhl_user` e `send_alert`
 3. Criar o email para os alertas
