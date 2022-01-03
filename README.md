@@ -66,7 +66,7 @@ OBS: Agendar os comandos no cron do servidor.
 
 ### Cron Jobs
 
-Para que os comandos funcionem corretamente, é necessário copiar o arquivo `cronjobs` para o diretório `mautic/app/`
+Para que os comandos funcionem corretamente, é necessário copiar o arquivo `cronjobs` para o diretório `mautic/bin/`
 
 #### Comandos:
 
