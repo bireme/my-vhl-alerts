@@ -27,20 +27,24 @@ class Alerts {
         $count = 0;
 
         $profiles = Profiles::get_profiles_list($user['sysUID']);
-        
-        if ( !$profiles ) {
-            return FALSE;
-        }
 
-        foreach ($profiles as $profile) {
-            $similars = SimDocs::get_similars($user['userID'], $profile['profileName']);
+        if ( $profiles ) {
+            // print("\nProfiles: " . count($profiles) . "\n");
 
-            if ( $similars ) {
-                $count++;
+            foreach ($profiles as $profile) {
+                $similars = SimDocs::get_similars($user['userID'], $profile['profileName']);
+
+                if ( $similars ) {
+                    $count++;
+		}
+
+		sleep(ALERTS_INTERVAL);
             }
+
+            // print("Similars: " . $count . "\n\n");
         }
 
-        if ( $count == 0 ) {
+        if ( !$profiles || $count == 0 ) {
             return FALSE;
         }
 

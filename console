@@ -12,6 +12,7 @@ if (function_exists('set_time_limit')) {
 }
 
 defined('ALERTS_CONSOLE') or define('ALERTS_CONSOLE', true);
+defined('ALERTS_INTERVAL') or define('ALERTS_INTERVAL', 1);
 defined('ALERTS_DEBUG') or define('ALERTS_DEBUG', false);
 define('ALERTS_ROOT_DIR', realpath(__DIR__));
 

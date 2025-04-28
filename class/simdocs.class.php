@@ -65,6 +65,8 @@ class SimDocs {
         $similar = $similar.'&considerDate=';
         // $similar = $similar.'&lastDays='.SIMDOCS_LAST_DAYS;
 
+        // print("Request: " . $similar .  "\n");
+
         $opts = array(
             'http' => array(
                 'method' => "GET",
@@ -76,15 +78,20 @@ class SimDocs {
 
         $context = stream_context_create($opts);
         $content = utf8_encode(@file_get_contents($similar,false,$context));
+        // $content = @file_get_contents($similar);
+
+        // print_r($content);
 
         if($content){
             $result = xmlstr_to_array($content);
 
-            if( array_key_exists('document', $result) && count($result) > 0 ){
-                if( array_key_exists( 0, $result['document'] ) )
-                    $retValue = $result['document'];
-                else
+            // print_r($result);
+
+	    if( array_key_exists('document', $result) && count($result) > 0 ){
+                if( array_key_exists( 'id', $result['document'] ) )
                     $retValue = array_values($result);
+                else
+                    $retValue = $result['document'];
             }
         }
 
